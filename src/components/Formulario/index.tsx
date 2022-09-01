@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Button } from "../Button";
-import "./style.scss"
+import React, { useId, useState } from "react";
+import PropTypes from "prop-types";
 
+import { Button } from "../Button";
+import "./style.scss";
 
 export function Formulario({ salvaDados }) {
   const [nome, setName] = useState("");
@@ -9,38 +10,52 @@ export function Formulario({ salvaDados }) {
 
   const tratarFormulario = (evento) => {
     evento.preventDefault();
-    salvaDados({ nome, data });
+
+    salvaDados({ nome, data, id: `${Date.now()}` });
   };
 
   return (
     <div className="container_formulario">
-    <form className="formulario"onSubmit={tratarFormulario}>
-      <h2 className="titulo">Novo lembrete</h2>
-      <div className="container_inputs">
-        <label htmlFor="inputNome">Nome</label>
-        <input
-          className="inputFormulario"
-          type="text"
-          id="inputNome"
-          required
-          value={nome}
-          onChange={(evento) => setName(evento.target.value)}
-        />
-      </div>
-      <div className="container_inputs">
-        <label htmlFor="inputData">Data</label>
-        <input
-          className="inputFormulario"
-          type="date"
-          required
-          id="inputData"
-          value={data}
-          onChange={(evento) => setData(evento.target.value)}
-        />
-      </div>
+      <form className="formulario" onSubmit={tratarFormulario}>
+        <h2 className="formulario_titulo">Novo lembrete</h2>
 
-      <Button></Button>
-    </form>
+        <div className="formulario_container_inputs">
+          <label className="formulario_label" htmlFor="nome">
+            Nome
+          </label>
+          <input
+            className="formulario_input"
+            type="text"
+            id="nome"
+            placeholder="Ex: Ir ao mercado"
+            name="nome"
+            required
+            value={nome}
+            onChange={(evento) => setName(evento.target.value)}
+          />
+        </div>
+
+        <div className="formulario_container_inputs">
+          <label className="formulario_label" htmlFor="data">
+            Data
+          </label>
+          <input
+            className="formulario_input"
+            type="date"
+            required
+            id="data"
+            name="data"
+            value={data}
+            onChange={(evento) => setData(evento.target.value)}
+          />
+        </div>
+
+        <Button />
+      </form>
     </div>
   );
 }
+
+Formulario.propTypes = {
+  salvaDados: PropTypes.func,
+};
