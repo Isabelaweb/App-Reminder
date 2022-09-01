@@ -1,18 +1,30 @@
-.formulario label{
-    color: whitesmoke;
-    font-size: 20px;
-    width: 63px;
-    padding-right: 9px;
-}
-.titulo{
-    font-size: 50px;
-    margin-bottom: 20px;
+.formulario_titulo {
+  font-size: 50px;
 }
 
-.container_inputs{
-    display: flex;
+.formulario_formulario_container_inputs {
+  display: flex;
+  justify-content: space-between;
 }
 
-.inputFormulario{
-    width: 100%;
+.formulario_container_inputs + .formulario_container_inputs,
+.formulario_container_inputs + button {
+  margin-top: 16px;
+}
+
+.formulario_label {
+  width: 60px;
+  display: inline-block;
+}
+
+.formulario_input {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  max-width: 500px;
+  padding: 8px;
+  width: 100%;
+}
+
+.formulario_input:focus {
+  border: 2px solid black;
 }
