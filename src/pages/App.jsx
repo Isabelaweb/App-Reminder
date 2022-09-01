@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="container">
       <Formulario salvaDados={salvaDados} />
-      <Lista listaDeLembretes={lembretes} removeLembrete={removendoLembrete} />
+      {lembretes.length >0 &&<Lista listaDeLembretes={lembretes} removeLembrete={removendoLembrete} />}
     </div>
   );
 }
